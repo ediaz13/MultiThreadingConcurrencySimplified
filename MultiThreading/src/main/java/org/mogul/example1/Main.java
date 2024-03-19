@@ -1,4 +1,4 @@
-package main.java.org.mogul;
+package main.java.org.mogul.example1;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
