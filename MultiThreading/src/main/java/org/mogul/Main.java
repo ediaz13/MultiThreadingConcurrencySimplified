@@ -1,19 +1,31 @@
-package org.mogul;
+package main.java.org.mogul;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!\n");
+    public static void main(String[] args) throws InterruptedException {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("We are now in thread: " +  Thread.currentThread().getName());
+                System.out.println("Priority: " +  Thread.currentThread().getPriority());
+            }
+        });
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        thread.setName("Mogul Thread");
+        thread.setPriority(Thread.MAX_PRIORITY);
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        System.out.println("We are now in thread: " +  Thread.currentThread().getName() + " before starting a new thread");
+        thread.start();
+        System.out.println("We are now in thread: " +  Thread.currentThread().getName() + " before starting a new thread");
+
+        thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println("A critical error happened in thread " + t.getName()
+                    + " the error is: " + e.getMessage());
+            }
+        });
+
+        Thread.sleep(10000);
+
     }
 }
