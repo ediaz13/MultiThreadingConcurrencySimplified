@@ -2,9 +2,10 @@ package org.mogul.interrupt;
 
 import java.math.BigInteger;
 
-public class MainLongComputation {
+public class MainDeamon {
     public static void main(String[] args) {
         Thread thread = new Thread(new LongComputationalTask(new BigInteger("20000000"), new BigInteger("4555555555")));
+        thread.setDaemon(true);
         thread.start();
         thread.interrupt();
     }
@@ -29,9 +30,6 @@ public class MainLongComputation {
             BigInteger result = BigInteger.ONE;
 
             for (BigInteger i = BigInteger.ZERO; i.compareTo(power) != 0; i = i.add(BigInteger.ONE)) {
-                if (Thread.currentThread().isInterrupted()) {
-                    System.out.println("Prematurely Interrupted Computation");
-                }
                 result = result.multiply(base);
             }
 
