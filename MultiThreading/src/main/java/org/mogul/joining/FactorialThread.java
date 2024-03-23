@@ -7,6 +7,10 @@ public class FactorialThread extends Thread {
     private BigInteger result = BigInteger.ZERO;
     private boolean isFinished;
 
+    public FactorialThread(long inputNumber) {
+        this.inputNumber = inputNumber;
+    }
+
     public void run() {
         this.result = factorial(inputNumber);
         this.isFinished = true;
