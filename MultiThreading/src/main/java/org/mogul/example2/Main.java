@@ -1,4 +1,4 @@
-package main.java.org.mogul.example2;
+package org.mogul.example2;
 
 public class Main {
     public static void main(String[] args) {
