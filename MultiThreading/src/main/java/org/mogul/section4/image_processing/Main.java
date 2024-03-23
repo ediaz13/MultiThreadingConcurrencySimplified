@@ -1,8 +1,26 @@
 package org.mogul.section4.image_processing;
 
-public class Main {
-    public static void main(String[] args) {
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+public class Main {
+    public static final String SOURCE_FILE = "./resources/many-flowers.jpg";
+    public static final String DESTINATION_FILE = "./out/many-flowers.jpg";
+
+    public static void main(String[] args) throws IOException {
+        BufferedImage originalImage = ImageIO.read(new File(SOURCE_FILE));
+        BufferedImage resultImage = new BufferedImage(originalImage.getWidth(), originalImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+    }
+
+    public static void recolorPixel (BufferedImage originalImage, BufferedImage resultImage, int x, int y) {
+
+    }
+
+    public static boolean isShadeGray( int red, int green, int blue) {
+        return Math.abs(red - green) < 30 && Math.abs(red - blue) < 30 && Math.abs(green - blue) < 30;
     }
 
     public static int createRGBFromColours(int red, int green, int blue) {
