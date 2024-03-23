@@ -1,4 +1,4 @@
-package org.mogul.interrupt;
+package org.mogul.section3.interrupt;
 
 import java.math.BigInteger;
 

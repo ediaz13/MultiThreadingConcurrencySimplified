@@ -1,4 +1,4 @@
-package org.mogul.exercise;
+package org.mogul.section3.exercise;
 import java.math.BigInteger;
 
 public class ComplexCalculation {

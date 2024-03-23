@@ -1,4 +1,4 @@
-package org.mogul.interrupt;
+package org.mogul.section3.interrupt;
 
 public class MainBlocking {
     public static void main(String[] args) {

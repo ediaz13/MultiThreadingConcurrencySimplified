@@ -1,4 +1,4 @@
-package org.mogul.example3;
+package org.mogul.section2.example3;
 
 import java.util.ArrayList;
 import java.util.List;

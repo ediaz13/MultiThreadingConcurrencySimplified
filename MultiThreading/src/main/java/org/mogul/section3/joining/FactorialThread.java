@@ -1,4 +1,4 @@
-package org.mogul.joining;
+package org.mogul.section3.joining;
 
 import java.math.BigInteger;
 
