@@ -13,6 +13,25 @@ public class Main {
         BufferedImage originalImage = ImageIO.read(new File(SOURCE_FILE));
         BufferedImage resultImage = new BufferedImage(originalImage.getWidth(), originalImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 
+        recolorSingleThreaded(originalImage, resultImage);
+
+        File outputFile = new File(DESTINATION_FILE);
+        ImageIO.write(resultImage, "jpg", outputFile);
+    }
+
+    public static void recolorSingleThreaded (BufferedImage originalImage, BufferedImage resultImage) {
+        recolorImage(originalImage, resultImage, 0, 0, originalImage.getWidth(), originalImage.getHeight());
+    }
+
+    public static void recolorImage(BufferedImage originalImage, BufferedImage resultImage, int leftCorner, int topCorner,
+                                    int width, int height) {
+        for (int x = leftCorner; x < leftCorner + width && x < originalImage.getWidth(); x++) {
+            for (int y = topCorner; y < topCorner + height && y < originalImage.getHeight(); y++) {
+                recolorPixel(originalImage, resultImage, x, y);
+            }
+
+        }
+
     }
 
     public static void recolorPixel (BufferedImage originalImage, BufferedImage resultImage, int x, int y) {
@@ -37,6 +56,7 @@ public class Main {
         }
 
         int newRGB = createRGBFromColours(newRed, newGreen, newBlue);
+        setRGB(resultImage, x, y , newRGB);
     }
 
     public static void setRGB(BufferedImage image, int x, int y, int rgb) {
@@ -62,7 +82,7 @@ public class Main {
         return (rgb & 0x00FF0000) >> 16;
     }
     public static int getGreen (int rgb) {
-        return (rgb & 0x0000FF00) >> 16;
+        return (rgb & 0x0000FF00) >> 8;
     }
     public static int getBlue (int rgb) {
         return rgb & 0x000000FF;
