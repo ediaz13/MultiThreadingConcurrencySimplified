@@ -16,7 +16,31 @@ public class Main {
     }
 
     public static void recolorPixel (BufferedImage originalImage, BufferedImage resultImage, int x, int y) {
+        int rgb = originalImage.getRGB(x, y);
 
+        int red = getRed(rgb);
+        int green = getGreen(rgb);
+        int blue = getBlue(rgb);
+
+        int newRed;
+        int newGreen;
+        int newBlue;
+
+        if (isShadeGray(red, green, blue)) {
+            newRed = Math.min(255, red + 10);
+            newGreen = Math.max(0, green -80);
+            newBlue = Math.max(0, blue - 20);
+        } else {
+            newRed = red;
+            newGreen = green;
+            newBlue = blue;
+        }
+
+        int newRGB = createRGBFromColours(newRed, newGreen, newBlue);
+    }
+
+    public static void setRGB(BufferedImage image, int x, int y, int rgb) {
+        image.getRaster().setDataElements(x, y, image.getColorModel().getDataElements(rgb, null));
     }
 
     public static boolean isShadeGray( int red, int green, int blue) {
