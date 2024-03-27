@@ -1,4 +1,4 @@
-package org.mogul.section4.image_processing;
+package org.mogul.section4.latency.image_processing;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static final String SOURCE_FILE = "./resources/many-flowers.jpg";
+    public static final String SOURCE_FILE = "./resources/latency/many-flowers.jpg";
     public static final String DESTINATION_FILE = "./out/many-flowers.jpg";
 
     public static void main(String[] args) throws IOException {
