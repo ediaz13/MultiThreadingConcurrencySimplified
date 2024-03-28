@@ -2,29 +2,29 @@ package org.mogul.problem;
 import java.util.ArrayList;
 import java.util.*;
 
-class File {
-    private String name;
-    private List<File> children;
 
-    public File(String name) {
-        this.name = name;
-        this.children = new ArrayList<>();
-    }
-
-    public void addChild(File file) {
-        this.children.add(file);
-    }
-
-    public List<File> getChildren() {
-        return children;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
 
 public class Main {
+    public static void main(String[] args) {
+        // Example input
+        File root = new File("root");
+        File a = new File("a");
+        File b = new File("b");
+        File c = new File("c");
+        File d = new File("d");
+
+        root.addChild(a);
+        root.addChild(b);
+        a.addChild(c);
+        a.addChild(d);
+
+        File parent1 = findParent(root, a, b);
+        File parent2 = findParent(root, c, d);
+
+        System.out.println("Common parent of a and b: " + (parent1 != null ? parent1.getName() : "None"));
+        System.out.println("Common parent of c and d: " + (parent2 != null ? parent2.getName() : "None"));
+    }
+
     public static File findParent(File root, File file1, File file2) {
         List<File> path1 = getPathToRoot(root, file1);
         List<File> path2 = getPathToRoot(root, file2);
@@ -76,23 +76,25 @@ public class Main {
         return false;
     }
 
-    public static void main(String[] args) {
-        // Example input
-        File root = new File("root");
-        File a = new File("a");
-        File b = new File("b");
-        File c = new File("c");
-        File d = new File("d");
+    static class File {
+        private String name;
+        private List<File> children;
 
-        root.addChild(a);
-        root.addChild(b);
-        a.addChild(c);
-        a.addChild(d);
+        public File(String name) {
+            this.name = name;
+            this.children = new ArrayList<>();
+        }
 
-        File parent1 = findParent(root, a, b);
-        File parent2 = findParent(root, c, d);
+        public void addChild(File file) {
+            this.children.add(file);
+        }
 
-        System.out.println("Common parent of a and b: " + (parent1 != null ? parent1.getName() : "None"));
-        System.out.println("Common parent of c and d: " + (parent2 != null ? parent2.getName() : "None"));
+        public List<File> getChildren() {
+            return children;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
