@@ -50,16 +50,16 @@ public class Main {
     // Helper method to get the path from a file to the root
     private static List<File> getPathToRoot(File root, File file) {
         List<File> path = new ArrayList<>();
-        getPathToRootHelper(root, file, path);
+        getPathToRootChildrenHelper(root, file, path);
         return path;
     }
 
     // Helper method to recursively find the path from a file to the root
-    private static boolean getPathToRootHelper(File root, File file, List<File> path) {
+    private static boolean getPathToRootChildrenHelper(File root, File file, List<File> path) {
         if (root == null) {
             return false;
         }
-        if (root == file || getPathToRootHelper(root.getChildren(), file, path)) {
+        if (root == file || getPathToRootChildrenHelper(root.getChildren(), file, path)) {
             path.add(root);
             return true;
         }
@@ -67,9 +67,9 @@ public class Main {
     }
 
     // Helper method to recursively find the path from a file to the root in children
-    private static boolean getPathToRootHelper(List<File> children, File file, List<File> path) {
+    private static boolean getPathToRootChildrenHelper(List<File> children, File file, List<File> path) {
         for (File child : children) {
-            if (getPathToRootHelper(child, file, path)) {
+            if (getPathToRootChildrenHelper(child, file, path)) {
                 return true;
             }
         }
