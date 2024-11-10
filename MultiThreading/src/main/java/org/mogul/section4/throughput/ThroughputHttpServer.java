@@ -11,9 +11,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class ThroughputHttpServer {
-    private static final String INPUT_FILE = "resources/throughput/war_and_peace.txt";
+    private static final String INPUT_FILE = "MultiThreading/resources/throughput/war_and_peace.txt";
 
-    private static final int NUMBER_OF_THREADS = 1;
+    private static final int NUMBER_OF_THREADS = 8;
 
     public static void main(String[] args) throws IOException {
         String text = new String(Files.readAllBytes(Paths.get(INPUT_FILE)));
