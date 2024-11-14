@@ -1,4 +1,4 @@
-package org.mogul.section5;
+package org.mogul.section5.non.atomics;
 
 public class DecrementingThread extends Thread {
     private final InventoryCounter inventoryCounter;

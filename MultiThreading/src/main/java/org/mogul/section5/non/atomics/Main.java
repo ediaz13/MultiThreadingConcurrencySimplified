@@ -1,4 +1,4 @@
-package org.mogul.section5;
+package org.mogul.section5.non.atomics;
 
 public class Main {
     //Race Condition
